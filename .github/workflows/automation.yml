@@ -1,0 +1,19 @@
+name: Run Translation Automation
+on:
+  repository_dispatch:
+    types: [curriculum-updated]
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.11
+    steps:
+      - name: Checkout automation repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run translation script
+        run: python app.py
