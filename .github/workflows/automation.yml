@@ -12,6 +12,14 @@ jobs:
       - name: Checkout automation repository
         uses: actions/checkout@v4
 
+      - name: Install Typst
+        run: |
+          apt-get update
+          apt-get install -y wget
+          wget -qO- https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz | tar xJ -C /usr/local
+          ln -s /usr/local/typst-x86_64-unknown-linux-musl/typst /usr/local/bin/typst
+
+          
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
