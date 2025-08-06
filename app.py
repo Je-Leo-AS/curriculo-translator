@@ -214,6 +214,6 @@ print(f"Alterações enviadas para a branch {BRANCH} no repositório remoto.")
 
 # In[ ]:
 
+shutil.rmtree(RESUME_DIR)
 
-
-
+os.remove(output_md)
