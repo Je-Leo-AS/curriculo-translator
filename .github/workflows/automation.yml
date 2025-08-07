@@ -19,7 +19,6 @@ jobs:
           wget -qO- https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz | tar xJ -C /usr/local
           ln -s /usr/local/typst-x86_64-unknown-linux-musl/typst /usr/local/bin/typst
 
-          
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -27,13 +26,7 @@ jobs:
           chmod 600 ~/.ssh/id_git
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
-
           
-      - name: Install system dependencies
-        run: |
-          apt-get update
-          apt-get install -y swig libpulse-dev libasound2-dev
-
       - name: Install system dependencies
         run: |
           apt-get update
