@@ -25,10 +25,14 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_git
           chmod 600 ~/.ssh/id_git
-          ssh-keyscan -H github.com > ~/.ssh/known_hosts
+          # Limpar known_hosts e adicionar chaves do GitHub
+          rm -f ~/.ssh/known_hosts
+          ssh-keyscan -t rsa,ecdsa,ed25519 -H github.com >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
-          # Testar conexão SSH com GitHub
-          ssh -T git@github.com || true
+          # Verificar conteúdo do known_hosts
+          cat ~/.ssh/known_hosts
+          # Testar conexão SSH
+          ssh -T -v git@github.com || true
           
       - name: Install system dependencies
         run: |
