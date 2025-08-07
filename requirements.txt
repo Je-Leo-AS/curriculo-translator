@@ -1,5 +1,6 @@
 dotenv
 crewai
+crewai_tools
 textract
 ipywidgets
 GitPython
