@@ -45,4 +45,5 @@ jobs:
       - name: Run translation script
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GIT_SSH_COMMAND: "ssh -i ~/.ssh/id_git -v"
         run: python app.py
