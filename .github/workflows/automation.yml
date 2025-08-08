@@ -20,6 +20,18 @@ jobs:
           wget -qO- https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz | tar xJ -C /usr/local
           ln -s /usr/local/typst-x86_64-unknown-linux-musl/typst /usr/local/bin/typst
 
+      - name: Configure Git identity
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      - name: Run translation script
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_git -v"
+        run: python app.py
+
+
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
