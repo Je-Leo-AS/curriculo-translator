@@ -127,10 +127,15 @@ reader_task = Task(
 )
 
 
-# Task para substituir trechos
 replacer_task = Task(
-    description="Escreve um arquivo typst do meu curriculo, traduzido pro ingles, com todo conteudo do arquivo markdown em inglês porem seguindo o modelo do arquivo orginal typ",
-    expected_output="Arquivo .typ com todo o conteudo do arquivo markdown seguindo o mesmo modelo do arquivo typst original,. lembre-se de escrever somente o conteudo do curriculo mais nenhuma menssagem como ```typ ... ``` e qualquer outra coisa que nao seja o conteudo do curriculo",
+    description=(
+        "Escreve um arquivo typst do meu curriculo, traduzido para o inglês, "
+        "com todo conteúdo do arquivo markdown em inglês, seguindo o modelo do arquivo typst original. "
+        "⚠️ Escreva SOMENTE o conteúdo do arquivo .typ, sem adicionar blocos de código "
+        "(```typ ... ```) ou qualquer outro delimitador. Não escreva mensagens adicionais."
+        "não esqueça que meu email deve ser escrito como email: link(\"mailto:leonardo_as20@hotmail.com\")[leonardo_as20\@hotmail.com],"
+    ),
+    expected_output="Conteúdo puro do arquivo .typ sem nenhuma marcação de bloco de código",
     agent=converter_agent,
     context=[reader_task],
     output_file='main.typ'
