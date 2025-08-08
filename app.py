@@ -208,10 +208,9 @@ else:
 
 
 # Fazer push para a branch remota
-repo.git.push()
+# Fazer push para a branch remota
+repo.git.push('origin', f'HEAD:{BRANCH}')
 print(f"Alterações enviadas para a branch {BRANCH} no repositório remoto.")
-
-
 # In[ ]:
 
 shutil.rmtree(RESUME_DIR)
