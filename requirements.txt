@@ -1,5 +1,4 @@
 crewai==1.0.0
 crewai_tools==1.0.0
 GitPython==3.1.43
-GitPython==3.1.45
 python-dotenv==1.1.1

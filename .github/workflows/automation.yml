@@ -8,10 +8,13 @@ jobs:
   run-automation:
     runs-on: ubuntu-latest
     container:
-      image: python:3.11
+      image: continuumio/anaconda3:latest
     steps:
       - name: Checkout automation repository
         uses: actions/checkout@v4
+
+      - name: Create Conda environment
+        run: conda env create -f environment.yml
 
       - name: Install Typst
         run: |
